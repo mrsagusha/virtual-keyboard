@@ -73,6 +73,18 @@ textarea {
 
 .caps_lock_key {
     width: 128px;
+    position: relative;
+}
+
+.caps_lock_key:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 5px;
+    top: 5px;
+    border-radius: 100px;
+    background-color: #d1cecc;
 }
 
 .enter_key {

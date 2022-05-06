@@ -5,13 +5,14 @@ const spaceKey = document.querySelector('.space_key');
 const shiftLeft = document.querySelector('.shift_left');
 const shiftRight = document.querySelector('.shift_right');
 const capsLockKey = document.querySelector('.space_key');
-const toggle_circle = document.querySelector('.toggle__circle');
-const night_mode = document.querySelector('.night__mode');
+const toggleCircle = document.querySelector('.toggle__circle');
+const nightMode = document.querySelector('.night__mode');
 const body = document.querySelector('body');
-const text_input = document.querySelector('textarea');
-const change_color = document.querySelector('.change__light__colors');
-const colors_input = document.querySelector('colors__input');
-const keyboard_lights = document.querySelector('keyboard__lights');
+const textInput = document.querySelector('textarea');
+const changeColor = document.querySelector('.change__light__colors');
+const colorsInput = document.querySelector('.colors__input');
+const keyboardLights = document.querySelector('.keyboard__lights');
+const keyboardWrapp = document.querySelector('.keyboard__wrapp');
 
 for (let i = 0; i < keys.length; i += 1) {
   keys[i].setAttribute('keyname', keys[i].innerText);
@@ -64,4 +65,23 @@ window.addEventListener('keyup', (e) => {
       keys[i].classList.remove('remove');
     }, 200);
   }
+});
+
+nightMode.addEventListener('click', () => {
+  toggleCircle.classList.toggle('active');
+  body.classList.toggle('active');
+  nightMode.classList.toggle('active');
+  keyboardWrapp.classList.toggle('active');
+  textInput.classList.toggle('active');
+  changeColor.classList.toggle('active');
+  for (let i = 0; i < keys.length; i += 1) {
+    keys[i].classList.toggle('keys_night');
+  }
+});
+
+colorsInput.addEventListener('input', () => {
+  for (let i = 0; i < keys.length; i += 1) {
+    keys[i].style.color = colorsInput.value;
+  }
+  keyboardLights.style.background = colorsInput.value;
 });
