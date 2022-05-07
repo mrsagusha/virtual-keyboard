@@ -1,19 +1,15 @@
 import './styles/styles.css';
-<<<<<<< HEAD
 import createDOMen from './DOMen';
 import createDOMrus from './DOMrus';
 
 const body = document.querySelector('body');
 
 createDOMen(body);
-=======
->>>>>>> 1f9024ab6151da8186c0689e2cb7e41f3d16fc8e
 
 const keys = document.querySelectorAll('.keys');
 const spaceKey = document.querySelector('.space_key');
 const shiftLeft = document.querySelector('.shift_left');
 const shiftRight = document.querySelector('.shift_right');
-<<<<<<< HEAD
 const capsLockKey = document.querySelector('.caps_lock_key');
 const toggleCircle = document.querySelector('.toggle__circle');
 const nightMode = document.querySelector('.night__mode');
@@ -36,16 +32,6 @@ const text = document.querySelector('textarea');
 const fn = document.querySelector('.fn_key');
 const backspace = document.querySelector('.backspace_key');
 const enter = document.querySelector('.enter_key');
-=======
-const capsLockKey = document.querySelector('.space_key');
-const toggle_circle = document.querySelector('.toggle__circle');
-const night_mode = document.querySelector('.night__mode');
-const body = document.querySelector('body');
-const text_input = document.querySelector('textarea');
-const change_color = document.querySelector('.change__light__colors');
-const colors_input = document.querySelector('colors__input');
-const keyboard_lights = document.querySelector('keyboard__lights');
->>>>>>> 1f9024ab6151da8186c0689e2cb7e41f3d16fc8e
 
 for (let i = 0; i < keys.length; i += 1) {
   keys[i].setAttribute('keyname', keys[i].innerText);
@@ -54,18 +40,13 @@ for (let i = 0; i < keys.length; i += 1) {
 
 window.addEventListener('keydown', (e) => {
   for (let i = 0; i < keys.length; i += 1) {
-<<<<<<< HEAD
     if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName') || e.key === keys[i].getAttribute('pressedShift')) {
-=======
-    if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName')) {
->>>>>>> 1f9024ab6151da8186c0689e2cb7e41f3d16fc8e
       keys[i].classList.add('active');
     }
     if (e.code === 'Space') {
       spaceKey.classList.add('active');
     }
     if (e.code === 'ShiftLeft') {
-<<<<<<< HEAD
       e.preventDefault();
       shiftRight.classList.remove('active');
       for (let k = 0; k < keys.length; k += 1) {
@@ -82,17 +63,10 @@ window.addEventListener('keydown', (e) => {
           keys[k].innerText = keys[k].getAttribute('pressedShift');
         }
       }
-=======
-      shiftRight.classList.remove('active');
-    }
-    if (e.code === 'ShiftRight') {
-      shiftLeft.classList.remove('active');
->>>>>>> 1f9024ab6151da8186c0689e2cb7e41f3d16fc8e
     }
     if (e.code === 'CapsLock') {
       capsLockKey.classList.toggle('active');
     }
-<<<<<<< HEAD
     if (e.code === 'Tab') {
       e.preventDefault();
       tab.classList.add('active');
@@ -127,18 +101,12 @@ window.addEventListener('keydown', (e) => {
       e.preventDefault();
       win.classList.add('active');
     }
-=======
->>>>>>> 1f9024ab6151da8186c0689e2cb7e41f3d16fc8e
   }
 });
 
 window.addEventListener('keyup', (e) => {
   for (let i = 0; i < keys.length; i += 1) {
-<<<<<<< HEAD
     if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName') || e.key === keys[i].getAttribute('pressedShift')) {
-=======
-    if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName')) {
->>>>>>> 1f9024ab6151da8186c0689e2cb7e41f3d16fc8e
       keys[i].classList.remove('active');
       keys[i].classList.add('remove');
     }
@@ -151,20 +119,16 @@ window.addEventListener('keyup', (e) => {
     if (e.code === 'ShiftLeft') {
       shiftRight.classList.remove('active');
       shiftRight.classList.remove('remove');
-<<<<<<< HEAD
       for (let k = 0; k < keys.length; k += 1) {
         if (keys[k].innerText === keys[k].getAttribute('pressedShift')) {
           keys[k].innerText = keys[k].getAttribute('keyname');
         }
       }
-=======
->>>>>>> 1f9024ab6151da8186c0689e2cb7e41f3d16fc8e
     }
 
     if (e.code === 'ShiftRight') {
       shiftLeft.classList.remove('active');
       shiftLeft.classList.remove('remove');
-<<<<<<< HEAD
       for (let k = 0; k < keys.length; k += 1) {
         if (keys[k].innerText === keys[k].getAttribute('pressedShift')) {
           keys[k].innerText = keys[k].getAttribute('keyname');
@@ -217,16 +181,12 @@ window.addEventListener('keyup', (e) => {
       win.classList.remove('active');
     }
 
-=======
-    }
->>>>>>> 1f9024ab6151da8186c0689e2cb7e41f3d16fc8e
     // eslint-disable-next-line no-loop-func
     setTimeout(() => {
       keys[i].classList.remove('remove');
     }, 200);
   }
 });
-<<<<<<< HEAD
 
 nightMode.addEventListener('click', () => {
   toggleCircle.classList.toggle('active');
@@ -274,7 +234,7 @@ for (let i = 0; i < keys.length; i += 1) {
       keys[i].classList.toggle('active');
     }
     if (keys[i] === backspace) {
-      let a = text.value.split('');
+      const a = text.value.split('');
       text.value = a.slice(0, a.length - 1).join('');
     }
     if (keys[i] === enter) {
@@ -294,5 +254,3 @@ for (let i = 0; i < keys.length; i += 1) {
     }
   });
 }
-=======
->>>>>>> 1f9024ab6151da8186c0689e2cb7e41f3d16fc8e
