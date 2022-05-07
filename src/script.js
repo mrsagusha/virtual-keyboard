@@ -21,6 +21,10 @@ const ctrlLeft = document.querySelector('.ctrl_left');
 const ctrlRight = document.querySelector('.ctrl_right');
 const altLeft = document.querySelector('.alt_left');
 const altRight = document.querySelector('.alt_right');
+const win = document.querySelector('.win_key');
+const fn = document.querySelector('.fn_key');
+const backspace = document.querySelector('.backspace_key');
+const keyboardKeys = document.querySelector('.keyboard__keys');
 
 for (let i = 0; i < keys.length; i += 1) {
   keys[i].setAttribute('keyname', keys[i].innerText);
@@ -29,7 +33,7 @@ for (let i = 0; i < keys.length; i += 1) {
 
 window.addEventListener('keydown', (e) => {
   for (let i = 0; i < keys.length; i += 1) {
-    if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName')) {
+    if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName') || e.key === keys[i].getAttribute('pressedShift')) {
       keys[i].classList.add('active');
     }
     if (e.code === 'Space') {
@@ -37,9 +41,19 @@ window.addEventListener('keydown', (e) => {
     }
     if (e.code === 'ShiftLeft') {
       shiftRight.classList.remove('active');
+      for (let k = 0; k < keys.length; k += 1) {
+        if (keys[k].innerText !== keys[k].getAttribute('pressedShift')) {
+          keys[k].innerText = keys[k].getAttribute('pressedShift');
+        }
+      }
     }
     if (e.code === 'ShiftRight') {
       shiftLeft.classList.remove('active');
+      for (let k = 0; k < keys.length; k += 1) {
+        if (keys[k].innerText !== keys[k].getAttribute('pressedShift')) {
+          keys[k].innerText = keys[k].getAttribute('pressedShift');
+        }
+      }
     }
     if (e.code === 'CapsLock') {
       capsLockKey.classList.toggle('active');
@@ -74,12 +88,16 @@ window.addEventListener('keydown', (e) => {
       altLeft.classList.remove('active');
       e.preventDefault();
     }
+    if (e.code === 'MetaLeft') {
+      e.preventDefault();
+      win.classList.add('active');
+    }
   }
 });
 
 window.addEventListener('keyup', (e) => {
   for (let i = 0; i < keys.length; i += 1) {
-    if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName')) {
+    if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName') || e.key === keys[i].getAttribute('pressedShift')) {
       keys[i].classList.remove('active');
       keys[i].classList.add('remove');
     }
@@ -92,9 +110,19 @@ window.addEventListener('keyup', (e) => {
     if (e.code === 'ShiftLeft') {
       shiftRight.classList.remove('active');
       shiftRight.classList.remove('remove');
+      for (let k = 0; k < keys.length; k += 1) {
+        if (keys[k].innerText === keys[k].getAttribute('pressedShift')) {
+          keys[k].innerText = keys[k].getAttribute('keyname');
+        }
+      }
     }
 
     if (e.code === 'ShiftRight') {
+      for (let k = 0; k < keys.length; k += 1) {
+        if (keys[k].innerText === keys[k].getAttribute('pressedShift')) {
+          keys[k].innerText = keys[k].getAttribute('keyname');
+        }
+      }
       shiftLeft.classList.remove('active');
       shiftLeft.classList.remove('remove');
     }
@@ -138,6 +166,10 @@ window.addEventListener('keyup', (e) => {
       altLeft.classList.remove('active');
       altLeft.classList.remove('remove');
       e.preventDefault();
+    }
+    if (e.code === 'MetaLeft') {
+      e.preventDefault();
+      win.classList.remove('active');
     }
 
     // eslint-disable-next-line no-loop-func
