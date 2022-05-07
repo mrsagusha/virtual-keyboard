@@ -4,7 +4,7 @@ import createDOMrus from './DOMrus';
 
 const body = document.querySelector('body');
 
-createDOMrus(body);
+createDOMen(body);
 
 const keys = document.querySelectorAll('.keys');
 const spaceKey = document.querySelector('.space_key');
@@ -27,6 +27,11 @@ const ctrlRight = document.querySelector('.ctrl_right');
 const altLeft = document.querySelector('.alt_left');
 const altRight = document.querySelector('.alt_right');
 const win = document.querySelector('.win_key');
+const pressed = new Set();
+const text = document.querySelector('textarea');
+const fn = document.querySelector('.fn_key');
+const backspace = document.querySelector('.backspace_key');
+const enter = document.querySelector('.enter_key');
 
 for (let i = 0; i < keys.length; i += 1) {
   keys[i].setAttribute('keyname', keys[i].innerText);
@@ -42,6 +47,7 @@ window.addEventListener('keydown', (e) => {
       spaceKey.classList.add('active');
     }
     if (e.code === 'ShiftLeft') {
+      e.preventDefault();
       shiftRight.classList.remove('active');
       for (let k = 0; k < keys.length; k += 1) {
         if (keys[k].innerText !== keys[k].getAttribute('pressedShift')) {
@@ -50,6 +56,7 @@ window.addEventListener('keydown', (e) => {
       }
     }
     if (e.code === 'ShiftRight') {
+      e.preventDefault();
       shiftLeft.classList.remove('active');
       for (let k = 0; k < keys.length; k += 1) {
         if (keys[k].innerText !== keys[k].getAttribute('pressedShift')) {
@@ -83,8 +90,8 @@ window.addEventListener('keydown', (e) => {
       ctrlRight.classList.add('active');
     }
     if (e.code === 'AltLeft') {
-      altRight.classList.remove('active');
       e.preventDefault();
+      altRight.classList.remove('active');
     }
     if (e.code === 'AltRight') {
       altLeft.classList.remove('active');
@@ -120,13 +127,13 @@ window.addEventListener('keyup', (e) => {
     }
 
     if (e.code === 'ShiftRight') {
+      shiftLeft.classList.remove('active');
+      shiftLeft.classList.remove('remove');
       for (let k = 0; k < keys.length; k += 1) {
         if (keys[k].innerText === keys[k].getAttribute('pressedShift')) {
           keys[k].innerText = keys[k].getAttribute('keyname');
         }
       }
-      shiftLeft.classList.remove('active');
-      shiftLeft.classList.remove('remove');
     }
 
     if (e.code === 'Tab') {
@@ -198,3 +205,52 @@ colorsInput.addEventListener('input', () => {
   }
   keyboardLights.style.background = colorsInput.value;
 });
+
+for (let i = 0; i < keys.length; i += 1) {
+  // eslint-disable-next-line no-loop-func
+  keys[i].addEventListener('mousedown', () => {
+    if (keys[i] !== capsLockKey) {
+      keys[i].classList.add('active');
+    }
+    if (keys[i] !== spaceKey && keys[i] !== shiftRight && keys[i] !== shiftLeft
+        && keys[i] !== capsLockKey && keys[i] !== tab && keys[i] !== arrowUp
+        && keys[i] !== arrowLeft && keys[i] !== arrowRight && keys[i] !== arrowBottom
+        && keys[i] !== ctrlLeft && keys[i] !== ctrlRight && keys[i] !== altLeft
+        && keys[i] !== altRight && keys[i] !== win && keys[i] !== fn && keys[i] !== backspace
+        && keys[i] !== enter) {
+      if (capsLockKey.classList.contains('active')) {
+        text.value += keys[i].innerText;
+      } else {
+        text.value += keys[i].innerText.toLowerCase();
+      }
+    }
+    if (keys[i] === spaceKey) {
+      text.value += ' ';
+    }
+    if (keys[i] === tab) {
+      text.value += '\t';
+    }
+    if (keys[i] === capsLockKey) {
+      keys[i].classList.toggle('active');
+    }
+    if (keys[i] === backspace) {
+      let a = text.value.split('');
+      text.value = a.slice(0, a.length - 1).join('');
+    }
+    if (keys[i] === enter) {
+      text.value += '\r\n';
+    }
+  });
+}
+
+for (let i = 0; i < keys.length; i += 1) {
+  keys[i].addEventListener('mouseup', () => {
+    if (keys[i] !== capsLockKey) {
+      keys[i].classList.remove('active');
+      keys[i].classList.add('remove');
+      setTimeout(() => {
+        keys[i].classList.remove('remove');
+      }, 200);
+    }
+  });
+}

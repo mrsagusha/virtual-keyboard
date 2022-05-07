@@ -1,5 +1,6 @@
 const createDOMen = function (el) {
   const backtick = '`';
+  const slash = '/';
   el.innerHTML = `'<div class="container">
     <div class="night__mode">
         <div class="toggle__circle"></div>
@@ -42,7 +43,7 @@ const createDOMen = function (el) {
                 <div class="keys" pressedShift="P">P</div>
                 <div class="keys" pressedShift="{">[</div>
                 <div class="keys" pressedShift="}">]</div>
-                <div class="keys slash_key" pressedShift="|">\</div>
+                <div class="keys slash_key" pressedShift="|">${slash}</div>
             </div>
             <div class="row">
                 <div class="keys caps_lock_key" pressedShift="Caps Lock">Caps Lock</div>
@@ -89,7 +90,7 @@ const createDOMen = function (el) {
             </div>
         </div>
     </div>
-    <textarea name="text" id=""></textarea>
+    <textarea name="text" id="" autofocus></textarea>
 </div>`;
 };
 
