@@ -1,4 +1,10 @@
 import './styles/styles.css';
+import createDOMen from './DOMen';
+import createDOMrus from './DOMrus';
+
+const body = document.querySelector('body');
+
+createDOMrus(body);
 
 const keys = document.querySelectorAll('.keys');
 const spaceKey = document.querySelector('.space_key');
@@ -7,7 +13,6 @@ const shiftRight = document.querySelector('.shift_right');
 const capsLockKey = document.querySelector('.caps_lock_key');
 const toggleCircle = document.querySelector('.toggle__circle');
 const nightMode = document.querySelector('.night__mode');
-const body = document.querySelector('body');
 const changeColor = document.querySelector('.change__light__colors');
 const colorsInput = document.querySelector('.colors__input');
 const keyboardLights = document.querySelector('.keyboard__lights');
@@ -22,9 +27,6 @@ const ctrlRight = document.querySelector('.ctrl_right');
 const altLeft = document.querySelector('.alt_left');
 const altRight = document.querySelector('.alt_right');
 const win = document.querySelector('.win_key');
-const fn = document.querySelector('.fn_key');
-const backspace = document.querySelector('.backspace_key');
-const keyboardKeys = document.querySelector('.keyboard__keys');
 
 for (let i = 0; i < keys.length; i += 1) {
   keys[i].setAttribute('keyname', keys[i].innerText);
