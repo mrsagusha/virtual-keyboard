@@ -189,8 +189,8 @@ body.active {
     color: #333;
 }
 
-.keys.keys_night.after {
-    animation: keys_night_animation 0.5 forwards;
+.keys.keys_night.keys.remove {
+    animation: keys_night_animation 0.5s forwards;
 }
 
 @keyframes keys_night_animation {
