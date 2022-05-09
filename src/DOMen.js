@@ -2,7 +2,7 @@ const createDOMen = function (el) {
   const backtick = '`';
   const slashEn = '/';
   const slashRu = '\\';
-  el.innerHTML = `'<div class="container">
+  el.innerHTML = `<div class="container">
     <div class="night__mode">
         <div class="toggle__circle"></div>
     </div>

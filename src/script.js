@@ -125,7 +125,7 @@ window.addEventListener('keyup', (e) => {
             keys[z].innerText = keys[z].getAttribute('keyname');
           }
         } else if (keys[z].innerText === keys[z].getAttribute('pressedShiftRus')) {
-          keys[z].innerText = keys[z].getAttribute('rus');
+          keys[z].innerText = keys[z].getAttribute('rusтзь');
         }
       }
     }
