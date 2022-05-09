@@ -44,7 +44,7 @@ const createDOMen = function (el) {
                 <div class="keys" rus='З' pressedShiftRus="З" pressedShift="P">P</div>
                 <div class="keys" rus='Х' pressedShiftRus="Х" pressedShift="{">[</div>
                 <div class="keys" rus='Ъ' pressedShiftRus="Ъ" pressedShift="}">]</div>
-                <div class="keys slash_key" rus='${slashRu}' pressedShiftRus="/" pressedShift="|">${slashEn}</div>
+                <div class="keys slash_key" rus='${slashRu}' pressedShiftRus="/" pressedShift="|">${slashRu}</div>
             </div>
             <div class="row">
                 <div class="keys caps_lock_key" rus='Caps Lock' pressedShiftRus="Caps Lock "pressedShift="Caps Lock">Caps Lock</div>

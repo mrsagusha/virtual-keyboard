@@ -40,8 +40,10 @@ for (let i = 0; i < keys.length; i += 1) {
 
 window.addEventListener('keydown', (e) => {
   for (let i = 0; i < keys.length; i += 1) {
-    if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName') || e.key === keys[i].getAttribute('pressedShift') || e.key === keys[i].getAttribute('rus')
-    || e.key === keys[i].getAttribute('rusShift')) {
+    if (e.key === keys[i].getAttribute('keyname') || e.key === keys[i].getAttribute('lowerCaseName') || e.key === keys[i].getAttribute('pressedShift')) {
+      keys[i].classList.add('active');
+    }
+    if (e.key === keys[i].getAttribute('rus') || e.key === keys[i].getAttribute('rusShift')) {
       keys[i].classList.add('active');
     }
     if (e.code === 'Space') {
