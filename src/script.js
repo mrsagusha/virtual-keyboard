@@ -121,11 +121,13 @@ window.addEventListener('keyup', (e) => {
       shiftRight.classList.remove('remove');
       for (let z = 0; z < keys.length; z += 1) {
         if (currentLanguage === 'en') {
-          if (keys[z].innerText === keys[z].getAttribute('pressedShift')) {
+          if (keys[z].innerText !== keys[z].getAttribute('keyname')) {
             keys[z].innerText = keys[z].getAttribute('keyname');
           }
-        } else if (keys[z].innerText === keys[z].getAttribute('pressedShiftRus')) {
-          keys[z].innerText = keys[z].getAttribute('rus');
+        } else if (currentLanguage === 'rus') {
+          if (keys[z].innerText !== keys[z].getAttribute('rus')) {
+            keys[z].innerText = keys[z].getAttribute('rus');
+          }
         }
       }
     }
