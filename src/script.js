@@ -50,6 +50,15 @@ window.addEventListener('keydown', (e) => {
     if (e.code === 'ShiftLeft') {
       e.preventDefault();
       shiftRight.classList.remove('active');
+      for (let z = 0; z < keys.length; z += 1) {
+        if (currentLanguage === 'en') {
+          if (keys[z].innerText !== keys[z].getAttribute('pressedShift')) {
+            keys[z].innerText = keys[z].getAttribute('pressedShift');
+          }
+        } else if (keys[z].innerText !== keys[z].getAttribute('pressedShiftRus')) {
+          keys[z].innerText = keys[z].getAttribute('pressedShiftRus');
+        }
+      }
     }
     if (e.code === 'ShiftRight') {
       e.preventDefault();
@@ -110,6 +119,15 @@ window.addEventListener('keyup', (e) => {
     if (e.code === 'ShiftLeft') {
       shiftRight.classList.remove('active');
       shiftRight.classList.remove('remove');
+      for (let z = 0; z < keys.length; z += 1) {
+        if (currentLanguage === 'en') {
+          if (keys[z].innerText === keys[z].getAttribute('pressedShift')) {
+            keys[z].innerText = keys[z].getAttribute('keyname');
+          }
+        } else if (keys[z].innerText === keys[z].getAttribute('pressedShiftRus')) {
+          keys[z].innerText = keys[z].getAttribute('rus');
+        }
+      }
     }
 
     if (e.code === 'ShiftRight') {
@@ -194,6 +212,7 @@ nightMode.addEventListener('click', () => {
   nightMode.classList.toggle('active');
   keyboardWrapp.classList.toggle('active');
   changeColor.classList.toggle('active');
+  document.querySelector('.description').classList.toggle('night');
   for (let i = 0; i < keys.length; i += 1) {
     keys[i].classList.toggle('keys_night');
   }
